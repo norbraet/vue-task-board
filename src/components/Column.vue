@@ -1,29 +1,49 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-const props = defineProps({ 
-    title: String
-})
-const emit = defineEmits(['add-task'])
+import TaskCard from '@/components/TaskCard.vue'
+import type { Task } from '@/types/task'
+import type { Column } from '@/types/Column'
+
+const props = defineProps<Column & { tasks: Task[] }>()
+const emit = defineEmits(['add-task', 'remove-task'])
 
 const newTaskTitle = ref('')
 
 function addTask() {
-    const value = newTaskTitle.value.trim() 
-    if(value) {
-        emit('add-task', value)
+    const title = newTaskTitle.value.trim()
+
+    if(title) {
+        const newTask: Task = {
+            id: Date.now().toString(),
+            title: title,
+            description: 'No description feature yet',
+            ticketNumber: Date.now(),
+            columnId: props.id,
+        }
+        
+        emit('add-task', newTask)
         newTaskTitle.value = ''
     }
+}
+
+function removeTask(task: Task) {
+    emit('remove-task', task)
 }
 </script>
 
 <template>
     <div class="flex flex-col gap-4">
         <div class="bg-gray-100 dark:bg-gray-800 rounded-md p-4 shadow">
-            <h3 class="text-sm uppercase font-semibold mb-4 text-gray-400 dark:text-white">{{ title }}</h3>
+            <h3 class="text-sm uppercase font-semibold mb-4 text-gray-400 dark:text-white">{{ props.title }}</h3>
         </div>
         <div class="bg-gray-100 dark:bg-gray-800 rounded-md p-4 shadow">
             <div class="space-y-2 mb-4">
-                <slot />
+                <TaskCard 
+                    v-for="task in props.tasks"
+                    :key="task.id"
+                    :task="task"
+                    @remove="removeTask"
+                />
             </div>
             <div class="flex gap-2">
                 <input 
@@ -43,3 +63,5 @@ function addTask() {
         </div>
     </div>
 </template>
+
+
