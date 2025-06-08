@@ -5,8 +5,16 @@ import type { Column } from "@/types/Column"
 
 export const useTaskStore = defineStore('task', () => {
     const tasks = ref<Task[]>([])
+    const nextTicketNumber = ref(1)
 
-    function addTask(task: Task) {
+    function addTask({ title, columnId}: { title: string, columnId: string }) {
+        const task: Task = {
+            id: Date.now().toString(),
+            title,
+            description: 'No description feature yet',
+            ticketNumber: nextTicketNumber.value++,
+            columnId
+        }
         tasks.value.push(task)
     }
 
@@ -28,6 +36,6 @@ export const useTaskStore = defineStore('task', () => {
         return tasks.value.filter(task => task.columnId == column.id)
     }
 
-    return { tasks, addTask, removeTask, updateTask, getTaskByColumn }
+    return { tasks, addTask, removeTask, updateTask, getTaskByColumn, nextTicketNumber }
 
 })

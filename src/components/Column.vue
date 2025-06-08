@@ -11,19 +11,11 @@ const newTaskTitle = ref('')
 
 function addTask() {
     const title = newTaskTitle.value.trim()
-
-    if(title) {
-        const newTask: Task = {
-            id: Date.now().toString(),
-            title: title,
-            description: 'No description feature yet',
-            ticketNumber: Date.now(),
-            columnId: props.id,
-        }
-        
-        emit('add-task', newTask)
-        newTaskTitle.value = ''
-    }
+    
+    if (!title) return
+    
+    emit('add-task', { title: newTaskTitle.value, columnId: props.id })
+    newTaskTitle.value = ''
 }
 
 function removeTask(task: Task) {
