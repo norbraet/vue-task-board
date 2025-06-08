@@ -1,7 +1,7 @@
 @import './base.css';
 @import 'tailwindcss';
 
-#app {
+#app > header, main {
   max-width: 1080px;
   margin: 0 auto;
   font-weight: normal;
