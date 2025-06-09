@@ -5,9 +5,18 @@ import type { Task } from '@/types/task'
 import type { Column } from '@/types/Column'
 
 const props = defineProps<Column & { tasks: Task[] }>()
-const emit = defineEmits(['add-task', 'remove-task'])
+const emit = defineEmits(['add-task', 'remove-task', 'move-task'])
 
 const newTaskTitle = ref('')
+const isDragOver = ref(false)
+
+function onDragOver() {
+    isDragOver.value = true
+}
+
+function onDragLeave() {
+    isDragOver.value = false
+}
 
 function addTask() {
     const title = newTaskTitle.value.trim()
@@ -21,15 +30,35 @@ function addTask() {
 function removeTask(task: Task) {
     emit('remove-task', task)
 }
+
+function onDrop(event: DragEvent) {
+    const data = event.dataTransfer?.getData('application/json')
+
+    if(!data) return
+
+    isDragOver.value = false
+    const task: Task = JSON.parse(data)
+    if (task.columnId === props.id) return // Drag and Drop on the same Table. May need to remove this later if i want to reorder tasks
+
+    emit('move-task', { ...task, columnId: props.id })
+}
 </script>
 
 <template>
-    <div class="flex flex-col gap-4">
+    <div 
+        class="flex flex-col gap-4" 
+        @dragover.prevent="onDragOver"
+        @dragleave="onDragLeave"
+        @drop="onDrop"
+    >
         <div class="bg-gray-100 dark:bg-gray-800 rounded-md p-4 shadow">
             <h3 class="text-sm uppercase font-semibold mb-4 text-gray-400 dark:text-white">{{ props.title }}</h3>
         </div>
         <div class="bg-gray-100 dark:bg-gray-800 rounded-md p-4 shadow">
-            <div class="space-y-2 mb-4">
+            <div 
+                class="space-y-2 mb-4" 
+                :class="{'ring-4 ring-blue-400': isDragOver}"
+            >
                 <TaskCard 
                     v-for="task in props.tasks"
                     :key="task.id"

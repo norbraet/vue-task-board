@@ -4,7 +4,7 @@ import { useTasks } from '@/composables/useTasks'
 import type { Column as ColumnType} from '@/types/Column'
 import { computed } from 'vue'
 
-const { tasks, addTask, removeTask } = useTasks()
+const { tasks, addTask, removeTask, updateTask } = useTasks()
 const columns = [
   { id: 'open', title: 'Open' },
   { id: 'wip', title: 'Work in Progress' },
@@ -30,6 +30,7 @@ function getTasksByColumn(column: ColumnType) {
         :tasks="getTasksByColumn(columnn).value"
         @add-task="addTask"
         @remove-task="removeTask"
+        @move-task="updateTask"
       />
     </section>
   </main>
