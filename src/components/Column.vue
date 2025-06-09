@@ -5,7 +5,7 @@ import type { Task } from '@/types/Task'
 import type { Column } from '@/types/Column'
 
 const props = defineProps<Column & { tasks: Task[] }>()
-const emit = defineEmits(['add-task', 'remove-task', 'move-task'])
+const emit = defineEmits(['add-task', 'remove-task', 'move-task', 'update-task'])
 
 const newTaskTitle = ref('')
 const isDragOver = ref(false)
@@ -29,6 +29,10 @@ function addTask() {
 
 function removeTask(task: Task) {
     emit('remove-task', task)
+}
+
+function updateTask(task: Task) {
+    emit('update-task', task)
 }
 
 function onDrop(event: DragEvent) {
@@ -64,6 +68,7 @@ function onDrop(event: DragEvent) {
                     :key="task.id"
                     :task="task"
                     @remove="removeTask"
+                    @update="updateTask"
                 />
             </div>
             <div class="flex gap-2">

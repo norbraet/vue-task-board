@@ -25,6 +25,7 @@ const columns = [
         @add-task="addTask"
         @remove-task="removeTask"
         @move-task="updateTask"
+        @update-task="updateTask"
       />
     </section>
   </main>

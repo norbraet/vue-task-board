@@ -1,19 +1,20 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import Modal from './Modal.vue'
+import TaskEditor from './TaskEditor/TaskEditor.vue';
 import type { Task } from '@/types/Task'
-import TaskEditor from './TaskEditor.vue';
 
 const props = defineProps<{ task: Task }>()
-const emit = defineEmits(['remove'])
+const emit = defineEmits(['remove', 'update'])
 const open = ref(false)
 
 function onDragStart(event: DragEvent) {
     event.dataTransfer?.setData('application/json', JSON.stringify(props.task))
 }
 
-function handleSave(e: any) {
-    console.log('e :>> ', e)
+function handleSave(updatedTask: Task) {
+    emit('update', updatedTask)
+    open.value = false
 }
     
 </script>
@@ -30,10 +31,6 @@ function handleSave(e: any) {
         <button @click="emit('remove', props.task)" class="text-red-500 text-xs mt-2 p-2 hover:outline-solid">Löschen</button>
     </div>
     <Modal :open="open" @modal-close="open = false">
-        <TaskEditor :task="props.task" @task-save="handleSave"/>
-        
-        
-        <h1 class="text-2xl font-bold mb-2">{{ props.task.title }}</h1>
-        <p>{{ props.task.description }}</p>
+        <TaskEditor :task="props.task" @update:task="handleSave"/>
     </Modal>
 </template>
