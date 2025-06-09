@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import TaskCard from '@/components/TaskCard.vue'
-import type { Task } from '@/types/task'
+import type { Task } from '@/types/Task'
 import type { Column } from '@/types/Column'
 
 const props = defineProps<Column & { tasks: Task[] }>()

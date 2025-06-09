@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Task } from '@/types/task'
+import type { Task } from '@/types/Task'
 
 const props = defineProps<{ task: Task }>()
 const emit = defineEmits(['remove'])

@@ -4,7 +4,7 @@ import { useTasks } from '@/composables/useTasks'
 import type { Column as ColumnType} from '@/types/Column'
 import { computed } from 'vue'
 
-const { tasks, addTask, removeTask, updateTask } = useTasks()
+const { addTask, removeTask, updateTask, getTasksByColumn } = useTasks()
 const columns = [
   { id: 'open', title: 'Open' },
   { id: 'wip', title: 'Work in Progress' },
@@ -13,9 +13,6 @@ const columns = [
   { id: 'finished', title: 'Finished' },
 ]
 
-function getTasksByColumn(column: ColumnType) {
-  return computed(() => tasks.value.filter(task => task.columnId === column.id))
-}
 </script>
 
 <template>

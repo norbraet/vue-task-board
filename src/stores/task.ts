@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
-import { ref } from "vue"
-import type { Task } from "@/types/task"
+import { ref, computed } from "vue"
+import type { Task } from "@/types/Task"
 import type { Column } from "@/types/Column"
 
 export const useTaskStore = defineStore('task', () => {
@@ -33,7 +33,7 @@ export const useTaskStore = defineStore('task', () => {
     }
 
     function getTaskByColumn(column: Column) {
-        return tasks.value.filter(task => task.columnId == column.id)
+        return computed(() => tasks.value.filter(task => task.columnId == column.id))
     }
 
     return { tasks, addTask, removeTask, updateTask, getTaskByColumn, nextTicketNumber }
