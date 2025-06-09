@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Column from '@/components/Column.vue'
-import Modal from '@/components/Modal.vue'
 import { useTasks } from '@/composables/useTasks'
 
 const { addTask, removeTask, updateTask, getTasksByColumn } = useTasks()
@@ -11,12 +10,11 @@ const columns = [
   { id: 'testing', title: 'Testing' },
   { id: 'finished', title: 'Finished' },
 ]
-
 </script>
 
 <template>
   <main class="flex flex-col gap-4">
-    <h2 class="text-xl font-semibold my-4 text-gray-400 dark:text-white">Issue-Board</h2>
+    <h2 class="text-xl font-semibold my-4">Issue-Board</h2>
     <section class="flex gap-2 my-4 overflow-scroll">
       <Column 
         v-for="columnn in columns"
@@ -29,10 +27,5 @@ const columns = [
         @move-task="updateTask"
       />
     </section>
-    <Modal>
-      <p>Hello World!</p>
-      <p>Lorem ipsum dolor</p>
-      <p>Hello</p>
-    </Modal>
   </main>
 </template>

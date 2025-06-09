@@ -52,7 +52,7 @@ function onDrop(event: DragEvent) {
         @drop="onDrop"
     >
         <div class="bg-gray-100 dark:bg-gray-800 rounded-md p-4 shadow">
-            <h3 class="text-sm uppercase font-semibold mb-4 text-gray-400 dark:text-white">{{ props.title }}</h3>
+            <h3 class="text-sm uppercase font-semibold mb-4">{{ props.title }}</h3>
         </div>
         <div class="bg-gray-100 dark:bg-gray-800 rounded-md p-4 shadow">
             <div 

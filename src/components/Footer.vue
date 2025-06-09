@@ -3,7 +3,7 @@ const currentYear = new Date().getFullYear()
 </script>
 
 <template>
-  <footer class="py-6 bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-white">
+  <footer class="py-6 bg-gray-100 dark:bg-gray-800 ">
     <div class="container mx-auto px-4 text-center">
       <p class="text-sm">
         &copy; {{ currentYear }} Norbert Balaz. This is just a test project.

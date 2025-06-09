@@ -15,7 +15,7 @@ function onDragStart(event: DragEvent) {
 
 <template>
     <div 
-        class="bg-background p-4 rounded mb-2 shadow"
+        class="bg-background dark:bg-gray-900 p-4 rounded mb-2 shadow"
         draggable="true"
         @dragstart="onDragStart"
         @click="open = true"

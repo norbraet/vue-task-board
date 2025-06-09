@@ -22,9 +22,9 @@ watch(() => props.open, (val) => {
 <template>
     <Teleport to="#modal">
         <Transition name="modal" class="transition-all">
-            <div v-if="open" class="fixed w-screen h-screen bg-background-darken top-0 left-0 flex justify-center items-center">
+            <div v-if="open" class="fixed w-screen h-screen bg-backdrop top-0 left-0 flex justify-center items-center">
                 <div 
-                    class="modal relative bg-background w-full max-w-[1080px] p-10 rounded-lg shadow-2xl"
+                    class="modal relative bg-background dark:bg-gray-900 w-full max-w-[1080px] p-10 rounded-lg shadow-2xl"
                     ref="modal"
                 >
                     <button class="absolute top-4 right-4 bg-none border-none cursor-pointer" @click="emit('modal-close')">
@@ -37,7 +37,7 @@ watch(() => props.open, (val) => {
     </Teleport>
 </template>
 
-<style>
+<style scoped>
 .modal-enter-active,
 .modal-leave-active {
     transition: all 0.25s ease;
