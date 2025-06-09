@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import Column from '@/components/Column.vue'
 import { useTasks } from '@/composables/useTasks'
-import type { Column as ColumnType} from '@/types/Column'
-import { computed } from 'vue'
 
 const { addTask, removeTask, updateTask, getTasksByColumn } = useTasks()
 const columns = [
