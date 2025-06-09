@@ -1,5 +1,5 @@
 /* color palette from <https://github.com/vuejs/theme> */
-:root {
+@theme {
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;
@@ -26,6 +26,7 @@
   --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
   --color-background-mute: var(--vt-c-white-mute);
+  --color-background-darken: rgba(0, 0, 0, 0.5);
 
   --color-border: var(--vt-c-divider-light-2);
   --color-border-hover: var(--vt-c-divider-light-1);
