@@ -27,7 +27,7 @@ watch(() => props.open, (val) => {
                     class="modal relative bg-background dark:bg-gray-900 w-full max-w-[1080px] p-10 rounded-lg shadow-2xl"
                     ref="modal"
                 >
-                    <button class="absolute top-4 right-4 bg-none border-none cursor-pointer" @click="emit('modal-close')">
+                    <button class="absolute top-10 right-10 bg-none border-none cursor-pointer" @click="emit('modal-close')">
                         X
                     </button>
                     <slot />

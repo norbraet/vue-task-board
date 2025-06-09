@@ -6,11 +6,11 @@ const model = defineModel<string>()
 
 <template>
     <label class="block">
-        <span class="text-sm text-gray-500">{{ props.label }}</span>
+        <span class="text-lg">{{ props.label }}</span>
         <input 
             v-model="model"
             type="text"
-            class="border px-2 py-1 rounded w-full mt-1"    
+            class="px-2 py-1 rounded w-full mt-1 hover:bg-backdrop-light"    
         />
     </label>
 </template>

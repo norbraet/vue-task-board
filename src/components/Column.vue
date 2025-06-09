@@ -80,7 +80,7 @@ function onDrop(event: DragEvent) {
                     @keyup.enter="addTask"
                 />
                 <button 
-                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm hover:cursor-pointer"
                     @click="addTask"
                 >
                     Add
