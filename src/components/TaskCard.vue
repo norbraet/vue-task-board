@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import Modal from './Modal.vue'
 import type { Task } from '@/types/Task'
+import TaskEditor from './TaskEditor.vue';
 
 const props = defineProps<{ task: Task }>()
 const emit = defineEmits(['remove'])
@@ -9,6 +10,10 @@ const open = ref(false)
 
 function onDragStart(event: DragEvent) {
     event.dataTransfer?.setData('application/json', JSON.stringify(props.task))
+}
+
+function handleSave(e: any) {
+    console.log('e :>> ', e)
 }
     
 </script>
@@ -25,7 +30,10 @@ function onDragStart(event: DragEvent) {
         <button @click="emit('remove', props.task)" class="text-red-500 text-xs mt-2 p-2 hover:outline-solid">Löschen</button>
     </div>
     <Modal :open="open" @modal-close="open = false">
-        <h2 class="text-lg font-bold mb-2">{{ props.task.title }}</h2>
+        <TaskEditor :task="props.task" @task-save="handleSave"/>
+        
+        
+        <h1 class="text-2xl font-bold mb-2">{{ props.task.title }}</h1>
         <p>{{ props.task.description }}</p>
     </Modal>
 </template>
