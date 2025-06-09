@@ -5,7 +5,7 @@ import type { Task } from '@/types/Task'
 import type { Column } from '@/types/Column'
 
 const props = defineProps<Column & { tasks: Task[] }>()
-const emit = defineEmits(['add-task', 'remove-task', 'move-task'])
+const emit = defineEmits(['add-task', 'remove-task', 'move-task', 'update-task'])
 
 const newTaskTitle = ref('')
 const isDragOver = ref(false)
@@ -31,6 +31,10 @@ function removeTask(task: Task) {
     emit('remove-task', task)
 }
 
+function updateTask(task: Task) {
+    emit('update-task', task)
+}
+
 function onDrop(event: DragEvent) {
     const data = event.dataTransfer?.getData('application/json')
 
@@ -52,7 +56,7 @@ function onDrop(event: DragEvent) {
         @drop="onDrop"
     >
         <div class="bg-gray-100 dark:bg-gray-800 rounded-md p-4 shadow">
-            <h3 class="text-sm uppercase font-semibold mb-4 text-gray-400 dark:text-white">{{ props.title }}</h3>
+            <h3 class="text-sm uppercase font-semibold mb-4">{{ props.title }}</h3>
         </div>
         <div class="bg-gray-100 dark:bg-gray-800 rounded-md p-4 shadow">
             <div 
@@ -64,6 +68,7 @@ function onDrop(event: DragEvent) {
                     :key="task.id"
                     :task="task"
                     @remove="removeTask"
+                    @update="updateTask"
                 />
             </div>
             <div class="flex gap-2">
@@ -75,7 +80,7 @@ function onDrop(event: DragEvent) {
                     @keyup.enter="addTask"
                 />
                 <button 
-                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm hover:cursor-pointer"
                     @click="addTask"
                 >
                     Add
