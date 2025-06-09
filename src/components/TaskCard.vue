@@ -28,7 +28,7 @@ function handleSave(updatedTask: Task) {
     >
         <h4>{{ props.task.title }}</h4>
         <p>#{{ props.task.ticketNumber }}</p>
-        <button @click="emit('remove', props.task)" class="text-red-500 text-xs mt-2 p-2 hover:outline-solid">Löschen</button>
+        <button @click.stop="emit('remove', props.task)" class="text-red-500 text-xs mt-2 p-2 hover:outline-solid">Löschen</button>
     </div>
     <Modal :open="open" @modal-close="open = false">
         <TaskEditor :task="props.task" @update:task="handleSave"/>
