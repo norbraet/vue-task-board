@@ -9,7 +9,7 @@ export const useTaskStore = defineStore('task', () => {
 
     function addTask({ title, columnId}: { title: string, columnId: string }) {
         const task: Task = {
-            id: Date.now().toString(),
+            id: crypto.randomUUID(),
             title,
             description: 'No description feature yet',
             ticketNumber: nextTicketNumber.value++,
