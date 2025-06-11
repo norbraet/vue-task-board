@@ -1,10 +1,9 @@
 <script setup lang="ts">
-
-const props = defineProps<{
-    label: string
-    options: string[]
-}>() 
-const model = defineModel<string>()
+    const props = defineProps<{
+        label: string
+        options: string[]
+    }>()
+    const model = defineModel<string>()
 </script>
 
 <template>
@@ -12,15 +11,8 @@ const model = defineModel<string>()
         <span class="text-lg">
             {{ props.label }}
         </span>
-        <select
-            v-model="model"
-            class="px-2 py-1 rounded w-full mt-1 hover:bg-backdrop-light"
-        >
-            <option
-                v-for="option in props.options"
-                :key="option"
-                :value="option"
-            >
+        <select v-model="model" class="hover:bg-backdrop-light mt-1 w-full rounded px-2 py-1">
+            <option v-for="option in props.options" :key="option" :value="option">
                 {{ option }}
             </option>
         </select>

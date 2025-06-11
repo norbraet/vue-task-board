@@ -1,7 +1,6 @@
 <script setup lang="ts">
-
-const props = defineProps<{ label: string }>()
-const model = defineModel<string>()
+    const props = defineProps<{ label: string }>()
+    const model = defineModel<string>()
 </script>
 
 <template>
@@ -9,9 +8,6 @@ const model = defineModel<string>()
         <span class="text-lg">
             {{ label }}
         </span>
-        <textarea 
-            v-model="model"
-            class="px-2 py-1 rounded w-full mt-1 hover:bg-backdrop-light"
-        />
+        <textarea v-model="model" class="hover:bg-backdrop-light mt-1 w-full rounded px-2 py-1" />
     </label>
 </template>
