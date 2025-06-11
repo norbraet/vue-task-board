@@ -3,19 +3,33 @@
 
     const isActiveLink = (routePath) => {
         const route = useRoute()
-        return (route.path = routePath)
+        return route.path === routePath
     }
 </script>
 
 <template>
     <header>
-        <nav>
-            <ol class="flex gap-10">
-                <li>
-                    <RouterLink to="/">Home </RouterLink>
+        <nav class="container mx-auto">
+            <ol class="flex gap-4 justify-end items-center">
+                <li class="py-2">
+                    <RouterLink
+                        to="/"
+                        :class="[
+                            isActiveLink('/') ? 'bg-blue-600' : 'hover:bg-blue-700 hover:text-white',
+                            'rounded-md py-2 px-4 transition-colors',
+                        ]"
+                        >Home
+                    </RouterLink>
                 </li>
-                <li>
-                    <RouterLink to="/about">About</RouterLink>
+                <li class="py-2">
+                    <RouterLink
+                        to="/about"
+                        :class="[
+                            isActiveLink('/about') ? 'bg-blue-600' : 'hover:bg-blue-700 hover:text-white',
+                            'rounded-md py-2 px-4 transition-colors',
+                        ]"
+                        >About
+                    </RouterLink>
                 </li>
             </ol>
         </nav>

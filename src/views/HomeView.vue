@@ -8,20 +8,22 @@
 </script>
 
 <template>
-    <main class="flex flex-col gap-4">
-        <h2 class="my-4 text-lg font-semibold">Issue-Board</h2>
-        <section class="my-4 flex gap-2 overflow-scroll">
-            <Column
-                v-for="columnn in columns"
-                :key="columnn.id"
-                :id="columnn.id"
-                :title="columnn.title"
-                :tasks="getTasksByColumn(columnn).value"
-                @add-task="addTask"
-                @remove-task="removeTask"
-                @move-task="updateTask"
-                @update-task="updateTask"
-            />
+    <main>
+        <section class="container mx-auto flex flex-col gap-4">
+            <h2 class="my-4 text-lg font-semibold">Issue-Board</h2>
+            <div class="my-4 flex gap-4 overflow-auto">
+                <Column
+                    v-for="columnn in columns"
+                    :key="columnn.id"
+                    :id="columnn.id"
+                    :title="columnn.title"
+                    :tasks="getTasksByColumn(columnn).value"
+                    @add-task="addTask"
+                    @remove-task="removeTask"
+                    @move-task="updateTask"
+                    @update-task="updateTask"
+                />
+            </div>
         </section>
     </main>
 </template>
