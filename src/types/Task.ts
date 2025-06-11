@@ -8,3 +8,8 @@ export interface Task {
     createdAt?: Date
     updatedAt?: Date
 }
+
+export interface NewTaskData {
+    title: string
+    columnId: string
+}
