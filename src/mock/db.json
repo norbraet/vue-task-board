@@ -1,0 +1,20 @@
+{
+    "task": [
+        {
+            "id": "123456",
+            "columnId": "123",
+            "title": "Some title",
+            "ticketNumber": "1",
+            "description": "Some description text",
+            "status": "Backlog",
+            "createdAt": "11-06-2025",
+            "updatedAt": "11-06-2025-10:00:00"
+        }
+    ],
+    "column": [
+        {
+            "id": "123",
+            "title": "Backlog"
+        }
+    ]
+}
