@@ -1,6 +1,6 @@
-import type { Column } from "@/types/Column"
-import { ref } from "vue"
-import { defineStore } from "pinia"
+import type { Column } from '@/types/Column'
+import { ref } from 'vue'
+import { defineStore } from 'pinia'
 
 export const useColumnStore = defineStore('column', () => {
     const columns = ref<Column[]>([

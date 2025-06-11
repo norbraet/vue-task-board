@@ -1,5 +1,5 @@
-import { useTaskStore } from "@/stores/task"
-import { storeToRefs } from "pinia"
+import { useTaskStore } from '@/stores/task'
+import { storeToRefs } from 'pinia'
 
 export function useTasks() {
     const taskStore = useTaskStore()

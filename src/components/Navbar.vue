@@ -1,6 +1,10 @@
 <script setup lang="ts">
-    import { RouterLink, RouterView } from 'vue-router'
-    import Footer from '@/components/Footer.vue'
+    import { RouterLink, useRoute } from 'vue-router'
+
+    const isActiveLink = (routePath) => {
+        const route = useRoute()
+        return (route.path = routePath)
+    }
 </script>
 
 <template>
@@ -8,7 +12,7 @@
         <nav>
             <ol class="flex gap-10">
                 <li>
-                    <RouterLink to="/">Home</RouterLink>
+                    <RouterLink to="/">Home </RouterLink>
                 </li>
                 <li>
                     <RouterLink to="/about">About</RouterLink>
@@ -16,13 +20,4 @@
             </ol>
         </nav>
     </header>
-
-    <RouterView />
-    <Footer />
 </template>
-
-<style scoped>
-    nav a.router-link-exact-active {
-        color: var(--color-text);
-    }
-</style>
