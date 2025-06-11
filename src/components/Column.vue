@@ -14,6 +14,7 @@ const emit = defineEmits<{
 
 const newTaskTitle = ref('')
 const isDragOver = ref(false)
+const errorMessage = ref('')
 
 function onDragOver() {
     isDragOver.value = true
@@ -26,7 +27,10 @@ function onDragLeave() {
 function addTask() {
     const title = newTaskTitle.value.trim()
     
-    if (!title) return
+    if (!title) {
+        errorMessage.value = "Input field is empty. Please type in a task name"
+        return
+    }
     
     emit('add-task', { title: newTaskTitle.value, columnId: props.id })
     newTaskTitle.value = ''
@@ -77,19 +81,27 @@ function onDrop(event: DragEvent) {
                 />
             </div>
             <div class="flex gap-2">
-                <input 
-                    v-model="newTaskTitle"
-                    type="text"
-                    placeholder="Create new Issue..."
-                    class="flex-1 px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 text-sm"
-                    @keyup.enter="addTask"
-                />
-                <button 
-                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm hover:cursor-pointer"
-                    @click="addTask"
-                >
-                    Add
-                </button>
+                <div>
+                    <input 
+                        v-model="newTaskTitle"
+                        type="text"
+                        placeholder="Create new Issue..."
+                        :class="['flex-1 px-3 py-2 rounded-lg border  dark:bg-gray-700 text-sm', errorMessage ? 'border-red-500 text-red-500' : 'border-gray-300 dark:border-gray-600']"
+                        @keyup.enter="addTask"
+                        @input="errorMessage = ''"
+                    />
+                    <small class="text-red-500" v-if="errorMessage">
+                        {{ errorMessage }}
+                    </small>
+                </div>
+                <div>
+                    <button 
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm hover:cursor-pointer"
+                        @click="addTask"
+                    >
+                        Add
+                    </button>
+                </div>
             </div>
         </div>
     </div>
