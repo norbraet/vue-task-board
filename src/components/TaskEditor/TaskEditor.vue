@@ -8,7 +8,10 @@ import EditableSelect from './components/EditableSelect.vue'
 import { useColumns } from '@/composables/useColumns'
 
 const props = defineProps<{ task: Task }>()
-const emit = defineEmits(['update:task'])
+const emit = defineEmits<{
+    (e: "update:task", task: Task): void,
+}>()
+
 const { columns } = useColumns()
 
 const editableTask: Ref<Task> = ref({ ...props.task })

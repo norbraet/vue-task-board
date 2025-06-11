@@ -3,7 +3,9 @@ import { ref, watch } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 
 const props = defineProps<{ open: boolean }>()
-const emit = defineEmits(['modal-close'])
+const emit = defineEmits<{
+    (e: "modal-close"): void
+}>()
 const modal = ref(null)
 
 onClickOutside(modal, () => emit('modal-close'))

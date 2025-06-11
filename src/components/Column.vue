@@ -5,7 +5,12 @@ import type { Task } from '@/types/Task'
 import type { Column } from '@/types/Column'
 
 const props = defineProps<Column & { tasks: Task[] }>()
-const emit = defineEmits(['add-task', 'remove-task', 'move-task', 'update-task'])
+const emit = defineEmits<{
+    (e: "add-task", column: Column): void,
+    (e: "remove-task", task: Task): void,
+    (e: "move-task", task: Task): void,
+    (e: "update-task", task: Task): void,
+}>()
 
 const newTaskTitle = ref('')
 const isDragOver = ref(false)

@@ -5,7 +5,10 @@ import TaskEditor from './TaskEditor/TaskEditor.vue';
 import type { Task } from '@/types/Task'
 
 const props = defineProps<{ task: Task }>()
-const emit = defineEmits(['remove', 'update'])
+const emit = defineEmits<{
+    (e: "remove", task: Task): void,
+    (e: "update", task: Task): void,
+}>()
 const open = ref(false)
 
 function onDragStart(event: DragEvent) {
