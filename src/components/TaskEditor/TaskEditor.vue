@@ -37,7 +37,9 @@
             <EditableSelect
                 v-model="editableTask.columnId"
                 label="Status"
-                :options="columns.map((col) => col.id)"
+                :options="columns"
+                labelKey="title"
+                valueKey="id"
             />
             <button
                 @click="save"
