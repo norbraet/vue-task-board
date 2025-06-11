@@ -92,7 +92,7 @@
                         @keyup.enter="addTask"
                         @input="errorMessage = ''"
                     />
-                    <small class="text-red-500" v-if="errorMessage">
+                    <small class="block text-red-500" v-if="errorMessage">
                         {{ errorMessage }}
                     </small>
                 </div>

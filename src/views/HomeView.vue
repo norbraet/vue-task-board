@@ -10,7 +10,7 @@
 <template>
     <main>
         <section class="container mx-auto flex flex-col gap-4">
-            <h2 class="my-4 text-lg font-semibold">Issue-Board</h2>
+            <h2 class="my-4 text-xl font-semibold">Issue-Board</h2>
             <div class="my-4 flex gap-4 overflow-auto">
                 <Column
                     v-for="columnn in columns"
