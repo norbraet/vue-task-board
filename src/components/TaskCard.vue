@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import Modal from './Modal.vue'
 import TaskEditor from './TaskEditor/TaskEditor.vue';
 import type { Task } from '@/types/Task'
