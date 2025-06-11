@@ -1,7 +1,9 @@
 <script setup lang="ts">
     const props = defineProps<{
         label: string
-        options: string[]
+        options: Record<string, unknown>[]
+        labelKey: string
+        valueKey: string
     }>()
     const model = defineModel<string>()
 </script>
@@ -11,9 +13,17 @@
         <span class="text-lg">
             {{ props.label }}
         </span>
-        <select v-model="model" class="hover:bg-backdrop-light mt-1 w-full rounded px-2 py-1">
-            <option v-for="option in props.options" :key="option" :value="option">
-                {{ option }}
+        <select 
+            v-model="model" 
+            class="hover:bg-backdrop-light mt-1 w-full rounded px-2 py-1"
+        >
+            <option 
+                v-for="option in props.options" 
+                :key="option[props.valueKey]" 
+                :value="option[props.valueKey]"
+                class="bg-white dark:bg-gray-800"
+            >
+                {{ option[props.labelKey] }}
             </option>
         </select>
     </label>
