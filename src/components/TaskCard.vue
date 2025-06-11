@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { ref } from 'vue'
-    import Modal from './Modal.vue'
+    import BaseModal from './BaseModal.vue'
     import TaskEditor from './TaskEditor/TaskEditor.vue'
     import type { Task } from '@/types/Task'
 
@@ -37,7 +37,7 @@
             Löschen
         </button>
     </div>
-    <Modal :open="open" @modal-close="open = false">
+    <BaseModal :open="open" @modal-close="open = false">
         <TaskEditor :task="props.task" @update:task="handleSave" />
-    </Modal>
+    </BaseModal>
 </template>
