@@ -1,12 +1,12 @@
 <script setup lang="ts">
     import { ref } from 'vue'
     import TaskCard from '@/components/TaskCard.vue'
-    import type { Task } from '@/types/Task'
+    import type { Task, NewTaskData } from '@/types/Task'
     import type { Column } from '@/types/Column'
 
     const props = defineProps<Column & { tasks: Task[] }>()
     const emit = defineEmits<{
-        (e: 'add-task', column: Column): void
+        (e: 'add-task', info: NewTaskData): void
         (e: 'remove-task', task: Task): void
         (e: 'move-task', task: Task): void
         (e: 'update-task', task: Task): void
