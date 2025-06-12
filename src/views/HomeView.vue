@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import HelloWorld from '@/components/HelloWorld.vue';
+import TheWelcome from '@/components/HelloWorld.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <section class="container mx-auto flex flex-col gap-4">
+      <HelloWorld msg="Hello world!" />
+    </section>
   </main>
 </template>
