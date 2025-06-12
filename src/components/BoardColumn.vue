@@ -77,7 +77,7 @@
                     @update="updateTask"
                 />
             </div>
-            <div class="flex gap-2 flex-col">
+            <div class="flex flex-col gap-2">
                 <div class="flex items-center gap-2">
                     <input
                         v-model="newTaskTitle"
@@ -99,7 +99,7 @@
                         Add
                     </button>
                 </div>
-                <small class="block text-red-500 break-words" v-if="errorMessage">
+                <small class="block break-words text-red-500" v-if="errorMessage">
                     {{ errorMessage }}
                 </small>
             </div>

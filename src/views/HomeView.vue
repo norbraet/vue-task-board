@@ -47,7 +47,7 @@
                         {{ errorMessage }}
                     </small>
                 </label>
-                    
+
                 <div>
                     <button
                         class="rounded-lg bg-blue-600 px-4 py-2 text-sm text-white hover:cursor-pointer hover:bg-blue-700"

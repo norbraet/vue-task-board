@@ -5,9 +5,11 @@ export function useColumns() {
     const columnStore = useColumnStore()
     const { columns } = storeToRefs(columnStore)
 
-    return { 
+    return {
         columns,
         fetchColumns: columnStore.fetchColumns,
-        addColumn: columnStore.addColumn
+        addColumn: columnStore.addColumn,
+        deleteColumn: columnStore.deleteColumn,
+        updateColumn: columnStore.updateColumn,
     }
 }

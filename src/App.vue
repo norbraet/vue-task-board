@@ -8,7 +8,7 @@
 
     const { initTasks } = useTasks()
     const { fetchColumns } = useColumns()
- 
+
     onMounted(async () => {
         initTasks()
         fetchColumns()

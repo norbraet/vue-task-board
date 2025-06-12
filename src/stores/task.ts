@@ -19,7 +19,7 @@ export const useTaskStore = defineStore('task', () => {
             )
             nextTicketNumber.value = maxTicket + 1
         } catch (error) {
-            console.error("Error fetching jobs", error)
+            console.error('Error fetching jobs', error)
         }
     }
 
@@ -27,14 +27,13 @@ export const useTaskStore = defineStore('task', () => {
         const task: Task = {
             id: crypto.randomUUID(),
             title,
-            description: "No description feature yet",
+            description: 'No description feature yet',
             ticketNumber: nextTicketNumber.value++,
             columnId,
         }
         try {
-            const res = await axios.post("api/tasks", task)
+            const res = await axios.post('api/tasks', task)
             tasks.value.push(res.data)
-            
         } catch (error) {
             console.error('Error posting task', error)
         }
@@ -46,7 +45,7 @@ export const useTaskStore = defineStore('task', () => {
             await axios.delete(`api/tasks/${task.id}`)
             tasks.value = tasks.value.filter((t) => t.id !== id)
         } catch (error) {
-            console.error("Error deleting task", error)
+            console.error('Error deleting task', error)
         }
     }
 
@@ -54,12 +53,12 @@ export const useTaskStore = defineStore('task', () => {
         const id = tasks.value.findIndex((task) => task.id === updatedTask.id)
 
         if (id === -1) throw new Error('No Task Object with the given id')
-        
+
         try {
             const res = await axios.put(`api/tasks/${updatedTask.id}`, updatedTask)
             tasks.value[id] = res.data
         } catch (error) {
-            console.error("Error updating task", error)
+            console.error('Error updating task', error)
         }
     }
 
