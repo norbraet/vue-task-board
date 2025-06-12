@@ -11,5 +11,6 @@ export function useTasks() {
         removeTask: taskStore.removeTask,
         updateTask: taskStore.updateTask,
         getTasksByColumn: taskStore.getTaskByColumn,
+        initTasks: taskStore.initTasks,
     }
 }

@@ -11,7 +11,7 @@
         "type-check": "vue-tsc --build",
         "lint": "eslint . --fix",
         "format": "prettier --write src/",
-        "mock:server": "json-server --watch src/mock/db.json --port 5000"
+        "mock:server": "json-server --watch src/mock/db.json --port 8000"
     },
     "dependencies": {
         "@tailwindcss/vite": "^4.1.8",

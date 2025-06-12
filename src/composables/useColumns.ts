@@ -5,5 +5,8 @@ export function useColumns() {
     const columnStore = useColumnStore()
     const { columns } = storeToRefs(columnStore)
 
-    return { columns }
+    return { 
+        columns,
+        fetchColumns: columnStore.fetchColumns
+    }
 }
