@@ -16,7 +16,7 @@
                         to="/"
                         :class="[
                             isActiveLink('/')
-                                ? 'bg-blue-600'
+                                ? 'bg-blue-600 text-white'
                                 : 'hover:bg-blue-700 hover:text-white',
                             'rounded-md px-4 py-2 transition-colors',
                         ]"
@@ -28,7 +28,7 @@
                         to="/about"
                         :class="[
                             isActiveLink('/about')
-                                ? 'bg-blue-600'
+                                ? 'bg-blue-600 text-white'
                                 : 'hover:bg-blue-700 hover:text-white',
                             'rounded-md px-4 py-2 transition-colors',
                         ]"

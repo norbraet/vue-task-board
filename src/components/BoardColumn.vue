@@ -77,8 +77,8 @@
                     @update="updateTask"
                 />
             </div>
-            <div class="flex gap-2">
-                <div>
+            <div class="flex gap-2 flex-col">
+                <div class="flex items-center gap-2">
                     <input
                         v-model="newTaskTitle"
                         type="text"
@@ -92,11 +92,6 @@
                         @keyup.enter="addTask"
                         @input="errorMessage = ''"
                     />
-                    <small class="block text-red-500" v-if="errorMessage">
-                        {{ errorMessage }}
-                    </small>
-                </div>
-                <div>
                     <button
                         class="rounded-lg bg-blue-600 px-4 py-2 text-sm text-white hover:cursor-pointer hover:bg-blue-700"
                         @click="addTask"
@@ -104,6 +99,9 @@
                         Add
                     </button>
                 </div>
+                <small class="block text-red-500 break-words" v-if="errorMessage">
+                    {{ errorMessage }}
+                </small>
             </div>
         </div>
     </div>

@@ -4,8 +4,7 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 
 export const useColumnStore = defineStore('column', () => {
-    // TODO: Die Columns hier sind hardcodiert, müssten aber vom User erstellbar sein
-    const columns = ref<Column[]>()
+    const columns = ref<Column[]>([])
 
     async function fetchColumns() {
         try {
@@ -16,5 +15,21 @@ export const useColumnStore = defineStore('column', () => {
         }
     }
 
-    return { columns, fetchColumns }
+    async function addColumn(title: string) {
+        const column: Column = {
+            id: crypto.randomUUID(),
+            title: title
+        } 
+        try {
+            const res = await axios.post("api/columns", column)
+            columns.value.push(res.data)
+            
+        } catch (error) {
+            console.error('Error posting column', error)
+        }
+    }
+
+    //TODO: Add updateColumn and deleteColumn functions for full CRUD operations
+
+    return { columns, fetchColumns, addColumn }
 })

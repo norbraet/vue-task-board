@@ -7,6 +7,7 @@ export function useColumns() {
 
     return { 
         columns,
-        fetchColumns: columnStore.fetchColumns
+        fetchColumns: columnStore.fetchColumns,
+        addColumn: columnStore.addColumn
     }
 }
