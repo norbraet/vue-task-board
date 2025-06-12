@@ -34,9 +34,7 @@
 
     --color-heading: var(--vt-c-text-light-1);
     --color-text: var(--vt-c-text-light-1);
-    --color-text-dark: var(--vt-c-text-dark-1)
-
-    --section-gap: 160px;
+    --color-text-dark: var(--vt-c-text-dark-1) --section-gap: 160px;
 
     --color-dark-background: var(--vt-c-black);
     --color-dark-background-soft: var(--vt-c-black-soft);
