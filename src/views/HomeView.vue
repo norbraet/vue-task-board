@@ -6,7 +6,7 @@
 <template>
     <main>
         <section class="container mx-auto flex flex-col gap-4">
-            <HelloWorld msg="Hello world!" />
+            <HelloWorld msg="Umfrage" />
         </section>
     </main>
 </template>
